@@ -25,8 +25,7 @@ Sua tarefa é criar e gerenciar rótulos de retenção que atendam aos critério
 Nesta tarefa, você criará rótulos de retenção que podem ser atribuídos a documentos e emails.
 
 1. No Microsoft Edge, navegue até o portal do Microsoft Purview, `https://purview.microsoft.com`, e faça logon.
-1. Selecione **Exibir todas as soluções**.
-1. Em **Risco e Conformidade**, selecione o cartão **Gerenciamento de Registros**.
+1. Selecione **Soluções** > **Gerenciamento de registros.**
 1. No painel de navegação à esquerda, selecione **Plano de arquivo**.
 1. Na página **Plano de arquivo**, clique em **+ Criar um rótulo**.
 1. Na página de entrada **Nomear rótulo de retenção**:
@@ -48,7 +47,7 @@ Nesta tarefa, você criará rótulos de retenção que podem ser atribuídos a d
 1. Na página **Revisar e concluir**, selecione **Criar rótulo**.
 1. Na página **Seu rótulo de retenção foi criado**, selecione **Não fazer nada** e selecione **Concluído**. O rótulo será publicado posteriormente no exercício.
 1. De volta à página **Plano de arquivo**, selecione **+ Criar um rótulo** para criar outro rótulo de retenção.
-1. Na página de entrada **Nomear rótulo de retenção**:
+1. Na página **Nomear rótulo de retenção**, insira:
 
     - **Nome**: `HR Records`
     - **Descrição para usuários**: `This label is auto-applied to HR records with a retention period of five years.`
@@ -73,9 +72,6 @@ Você criou rótulos de retenção para registros financeiros com um período de
 Seguindo a Tarefa 1, você publicará os rótulos de retenção para que eles estejam disponíveis para os usuários aplicarem a documentos em emails do Exchange e documentos do SharePoint.
 
 1. Você ainda deve estar na página **Plano de arquivo** no portal do Microsoft Purview.
-
-   Se não estiver, no Microsoft Edge, navegue até o portal do Microsoft Purview, `https://purview.microsoft.com`, e faça logon. Selecione **Exibir todas as soluções** e, em seguida, selecione **Gerenciamento de registros** > **Plano de arquivo**.
-
 1. Selecione a marca de seleção ao lado do rótulo de retenção de **Registros financeiros** e, em seguida, clique no botão **Publicar rótulos**.
 
     >![Captura de tela mostrando onde selecionar o rótulo de retenção e o botão publicar rótulos.](./Media/publish-labels.png)
@@ -91,7 +87,7 @@ Seguindo a Tarefa 1, você publicará os rótulos de retenção para que eles es
    - Contas do OneDrive
 
 1. Verifique se as caixas de correio e sites do Grupo do Microsoft 365 estão definidos como **Desativados** e clique em **Avançar**.
-1. Na entrada da página **Nomear política**:
+1. Na página **Nomear política**, insira:
 
    - Nome: `Financial Records Retention Label`
    - Descrição: `Retention label for financial records with a seven-year retention period.`
@@ -105,9 +101,9 @@ Você publicou o rótulo de retenção para registros financeiros.
 
 Seguindo a Tarefa 1, agora você aplicará automaticamente o rótulo de retenção de Registros de RH para que as informações sejam retidas.
 
-1. Você ainda deve estar em **Gerenciamento de Registros** no portal do Microsoft Purview. 
+1. Você ainda deve estar em **Gerenciamento de Registros** no portal do Microsoft Purview.
 
-   Se não estiver, no Microsoft Edge, navegue até o portal do Microsoft Purview, `https://purview.microsoft.com`, e faça logon. Selecione **Exibir todas as soluções** e, em seguida, selecione **Gerenciamento de Registros**.
+   Se não estiver, no Microsoft Edge, navegue até o portal do Microsoft Purview, `https://purview.microsoft.com`, e faça logon. Selecione **Soluções** > **Gerenciamento de registros.**
 
 1. No painel de navegação à esquerda, expanda **Políticas** e selecione **Políticas de rótulo**.
 1. Selecione **Aplicar automaticamente um rótulo** para iniciar a configuração **Criar política de rotulagem automática**.
