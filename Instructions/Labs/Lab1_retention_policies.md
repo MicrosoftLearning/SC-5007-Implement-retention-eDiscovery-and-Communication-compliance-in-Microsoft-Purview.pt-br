@@ -26,17 +26,13 @@ Sua tarefa é criar e gerenciar políticas de retenção que atendam aos critér
 Aqui, você criará uma política de retenção que se aplica a toda a organização.
 
 1. No Microsoft Edge, navegue até o portal do Microsoft Purview, `https://purview.microsoft.com`, e faça logon.
-1. Uma mensagem sobre o novo portal do Microsoft Purview aparecerá na tela. Escolha a opção para concordar com os termos de divulgação de fluxo de dados e a política de privacidade e clique em **Experimentar agora**.
+1. Uma mensagem sobre o novo portal do Microsoft Purview aparecerá na tela. Escolha a opção para concordar com os termos de divulgação de fluxo de dados e a política de privacidade e clique em **Introdução**.
 
     >![Captura de tela mostrando a tela de Boas-vindas ao novo porta do Microsoft Purview.](./Media/welcome-purview-portal.png)
 
-1. Selecione **Exibir todas as soluções**.
-1. Em **Governança de Dados**, selecione o cartão **Gerenciamento do ciclo de vida dos dados**.
-
-    >![Captura de tela mostrando o cartão Gerenciamento do ciclo de vida dos dados no portal do Microsoft Purview.](./Media/data-lifecycle-management-card.png)
-
+1. Selecione **Soluções** > **Gerenciamento do Ciclo de Vida dos Dados**.
 1. No painel de navegação à esquerda, expanda **Políticas** e selecione **Políticas de retenção**.
-1. Selecione **+ Novas políticas de retenção**.
+1. Clique em **+ Nova política de retenção**.
 1. Na página **Nomear política de retenção**, insira o Nome e a Descrição:
 
    - **Nome**: `Company wide`
@@ -63,8 +59,6 @@ Aqui, você criará uma política de retenção que se aplica a toda a organiza�
 1. Selecione **Avançar**.
 1. Na página **Revisar e concluir**, clique em **Enviar**.
 1. Depois que sua política for criada, selecione **Concluído**.
-
-Você criou uma política de retenção para vários locais. Esta política irá reter itens por três anos a partir da data da última modificação.
 
 Você criou uma política de retenção em toda a empresa que retém itens por três anos a partir da data da última modificação.
 
@@ -136,7 +130,7 @@ Nesta tarefa, você usará o PowerShell para criar e gerenciar políticas de ret
     Connect-IPPSSession
     ```
 
-1. Se solicitado, entre como um usuário com as permissões apropriadas.
+1. Quando solicitado, entre como um usuário com as permissões apropriadas.
 1. Execute o seguinte cmdlet para criar a primeira política de retenção para todos os locais, exceto equipes:
 
     ```powershell
@@ -156,8 +150,7 @@ Você criou políticas de retenção no PowerShell com um período de retenção
 Aqui, você criará uma política de retenção com escopo adaptável voltada a departamentos específicos, como Jurídico e Varejo.
 
 1. No Microsoft Edge, navegue até o portal do Microsoft Purview, `https://purview.microsoft.com`, e faça logon.
-1. Selecione **Exibir todas as soluções**.
-1. Em **Núcleo**, selecione o cartão **Configurações**.
+1. Selecione **Configurações** na barra de navegação esquerda.
 1. Expanda **Funções e escopos** e selecione **Escopos adaptáveis**.
 1. Na página **Escopos adaptáveis**, selecione **+ Criar escopo**.
 1. Na página **Nomear o escopo da política adaptativa**, insira:
@@ -179,14 +172,13 @@ Aqui, você criará uma política de retenção com escopo adaptável voltada a 
    - **Operador de consulta**: ou
    - **Atributo**: departamento
    - **Operador**: equivale a
-   - **Valor**: varejo
+   - **Valor**: `Retail`
 
     >![Captura de tela mostrando a consulta para definir os valores dos usuários.](./Media/query-to-define-users.png)
 
 1. Na página **Revisar e concluir**, clique em **Avançar** e, em seguida, **Enviar** 
 1. Depois que o escopo for criado, selecione **Concluído** para voltar à página **Escopos adaptáveis**.
-1. No painel de navegação à esquerda, selecione **Página Inicial** para retornar à página principal do portal do Microsoft Purview.
-1. Selecione **Exibir todas as soluções** e, em seguida, **Gerenciamento do ciclo de vida dos dados** em **Governança de dados**.
+1. Selecione **Soluções** > **Gerenciamento do Ciclo de Vida dos Dados**.
 1. Expanda **Políticas** e selecione **Políticas de retenção**.
 1. Na página **Políticas de retenção**, selecione **+ Nova política de retenção**.
 1. Na página **Nomear política de retenção**, insira:
@@ -198,7 +190,12 @@ Aqui, você criará uma política de retenção com escopo adaptável voltada a 
 1. Na página **Escopo da política**, clique em **Avançar**.
 1. Na página **Escolher o tipo de política de retenção para criar**, selecione **Adaptável ** ou **Estática**.
 1. Na página **Escolher escopos da política adaptável e locais**, selecione **+ Adicionar escopos** e escolha o escopo de **retenção de documentos jurídicos**.
-1. Em **Escolher locais para aplicar a política**, verifique se **Caixas de correio do Exchange** e **Contas do OneDrive** estão habilitadas e selecione **Avançar**.
+1. Em **Escolher locais para aplicar a política**, habilite:
+
+   - Caixas de correio do Exchange
+   - Contas do OneDrive
+
+1. Selecione **Avançar**.
 1. Na página **Decidir se deseja reter o conteúdo, excluí-lo ou ambos**, insira:
 
    - **Reter itens por um período específico**: 5 anos
