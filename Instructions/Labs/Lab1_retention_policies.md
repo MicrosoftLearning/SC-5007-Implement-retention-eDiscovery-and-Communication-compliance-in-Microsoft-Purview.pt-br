@@ -145,64 +145,68 @@ Nesta tarefa, você usará o PowerShell para criar e gerenciar políticas de ret
 
 Você criou políticas de retenção no PowerShell com um período de retenção de três anos.
 
-## Tarefa 4 – Criar uma política de retenção com escopo adaptável
+<!--- Commenting out until adaptive scope issue is resolved
 
-Aqui, você criará uma política de retenção com escopo adaptável voltada a departamentos específicos, como Jurídico e Varejo.
+## Task 4 – Create retention policy with adaptive scope
 
-1. No Microsoft Edge, navegue até o portal do Microsoft Purview, `https://purview.microsoft.com`, e faça logon.
-1. Selecione **Configurações** na barra de navegação esquerda.
-1. Expanda **Funções e escopos** e selecione **Escopos adaptáveis**.
-1. Na página **Escopos adaptáveis**, selecione **+ Criar escopo**.
-1. Na página **Nomear o escopo da política adaptativa**, insira:
+Here, you will create a retention policy with adaptive scope targeting specific departments like Legal and Retail.
 
-   - **Nome**: `Legal Documents Retention`
-   - **Descrição**: `Retention for legal related documents`
+1. In Microsoft Edge, navigate to the Microsoft Purview portal, `https://purview.microsoft.com`, and log in.
+1. Select **Settings** from the left navigation bar.
+1. Expand **Roles and scopes** then select **Adaptive scopes**.
+1. On the **Adaptive scopes** page select **+ Create scope**.
+1. On the **Name your adaptive policy scope page**, enter:
 
-1. Selecione **Avançar**.
-1. Na página **Atribuir unidade administrativa**, clique em **Avançar**.
-1. Na página **Que tipo de escopo você deseja criar?**, selecione **Usuários** e, em seguida, **Avançar**.
-1. Na página **Criar a consulta para definir usuários**, em **Atributos do usuário**, selecione:
+   - **Name**: `Legal Documents Retention`
+   - **Description**: `Retention for legal related documents`
 
-   - **Atributo**: departamento
-   - **Operador**: equivale a
-   - **Valor**: `Legal`
+1. Select **Next**.
+1. On the **Assign admin unit page**, select **Next**.
+1. On the **What type of scope do you want to create?** page, select **Users** and then **Next**.
+1. On the **Create the query to define users** page, under **User attributes**, select:
 
-1. Adicione um segundo atributo clicando no botão **+ Adicionar atributo** com os valores:
+   - **Attribute**: Department
+   - **Operator**: is equal to
+   - **Value**: `Legal`
 
-   - **Operador de consulta**: ou
-   - **Atributo**: departamento
-   - **Operador**: equivale a
-   - **Valor**: `Retail`
+1. Add a second attribute by selecting the **+ Add attribute** button with values:
 
-    >![Captura de tela mostrando a consulta para definir os valores dos usuários.](./Media/query-to-define-users.png)
+   - **Query operator**: Or
+   - **Attribute**: Department
+   - **Operator**: is equal to
+   - **Value**: `Retail`
 
-1. Na página **Revisar e concluir**, clique em **Avançar** e, em seguida, **Enviar** 
-1. Depois que o escopo for criado, selecione **Concluído** para voltar à página **Escopos adaptáveis**.
-1. Selecione **Soluções** > **Gerenciamento do Ciclo de Vida dos Dados**.
-1. Expanda **Políticas** e selecione **Políticas de retenção**.
-1. Na página **Políticas de retenção**, selecione **+ Nova política de retenção**.
-1. Na página **Nomear política de retenção**, insira:
+    >![Screenshot showing the query to define users values.](./Media/query-to-define-users.png)
 
-   - **Nome**: `Legal Data Retention`
-   - **Descrição**: `Retention of all documents within the legal and retail departments.`
+1. Select **Next** and then **Submit** on the **Review and finish** page.
+1. Once your scope has been created select **Done** to get back to the **Adaptive scopes** page.
+1. Select **Solutions** > **Data Lifecycle Management**.
+1. Expand **Policies** then select **Retention policies**.
+1. On the **Retention policies** page select **+ New retention policy**.
+1. On the **Name your retention policy page**, enter:
 
-1. Selecione **Avançar**.
-1. Na página **Escopo da política**, clique em **Avançar**.
-1. Na página **Escolher o tipo de política de retenção para criar**, selecione **Adaptável ** ou **Estática**.
-1. Na página **Escolher escopos da política adaptável e locais**, selecione **+ Adicionar escopos** e escolha o escopo de **retenção de documentos jurídicos**.
-1. Em **Escolher locais para aplicar a política**, habilite:
+   - **Name**: `Legal Data Retention`
+   - **Description**: `Retention of all documents within the legal and retail departments.`
 
-   - Caixas de correio do Exchange
-   - Contas do OneDrive
+1. Select **Next**.
+1. On the **Policy Scope** page, select **Next**.
+1. On the **Choose the type of retention policy to create** page, select **Adaptive** and then **Next**.
+1. On the **Choose adaptive policy scopes and locations** page, select **+ Add scopes** and choose the **Legal Documents Retention** scope.
+1. Under **Choose locations to apply the policy** enable:
 
-1. Selecione **Avançar**.
-1. Na página **Decidir se deseja reter o conteúdo, excluí-lo ou ambos**, insira:
+   - Exchange mailboxes
+   - OneDrive accounts
 
-   - **Reter itens por um período específico**: 5 anos
-   - **Iniciar o período de retenção com base em**: quando os itens foram criados
-   - **Ao final do período de retenção**: não fazer nada
+1. Select **Next**.
+1. On the **Decide if you want to retain content, delete it, or both** page, enter:
 
-1. Na página **Revisar e concluir**, clique em **Avançar** e, em seguida, **Enviar**.
-1. Depois que sua política for criada, selecione **Concluído**.
+   - **Retain items for a specific period**: 5 years
+   - **Start the retention period based on**: When items were created
+   - **At the end of the retention period**: Do nothing
 
-Você aplicou um escopo adaptável a uma política de retenção.
+1. Select **Next** and then **Submit** on the **Review and finish**.
+1. Once your policy is created, select **Done**.
+
+You have successfully applied an adaptive scope to a retention policy.
+
+--->
