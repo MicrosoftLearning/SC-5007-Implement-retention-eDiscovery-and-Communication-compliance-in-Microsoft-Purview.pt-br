@@ -1,7 +1,7 @@
 ---
 lab:
-  task: Case investigation with eDiscovery (Premium)
-  exercise: Exercise 3 - Case investigation with eDiscovery (Premium)
+  task: Case investigation with eDiscovery
+  exercise: Exercise 3 - Case investigation with eDiscovery
 ---
 
 ## Locatários do WWL – Termos de uso
@@ -14,183 +14,251 @@ Os locatários não podem ser convertidos em uma assinatura paga. Os locatários
 
 # Exercício 3 – Tarefas de qualificação
 
+A Contoso suspeita que dados confidenciais de pagamento, incluindo números de cartão de crédito e conta, foram manipulados incorretamente ou vazados. Como pesquisador, seu trabalho é usar a Descoberta Eletrônica do Microsoft Purview para criar um caso, pesquisar em fontes de dados, identificar conteúdo confidencial e aplicar restrições antes de produzir os resultados para conformidade ou revisão jurídica.
+
 Sua tarefa é criar e gerenciar casos de Descoberta Eletrônica que atendam aos critérios de investigação:
 
-- **Crie um novo caso de Descoberta Eletrônica**: configure um novo caso para iniciar sua investigação.
-- **Adicione custodiantes ao caso**: inclua indivíduos relevantes que possam ter dados pertinentes.
-- **Crie e execute uma estimativa de coleta**: analise o volume e a relevância dos dados para a investigação.
-- **Revise e refine a estimativa de coleta**: verifique se a coleta atende aos seus critérios.
-- **Confirmar a coleta em um conjunto de revisão**: prepare os dados para análise detalhada.
-- **Exporte os resultados da pesquisa**: salve os dados coletados para fins adicionais de revisão e conformidade.
+- **Crie um caso de Descoberta Eletrônica**: Crie um caso para gerenciar a investigação de dados de pagamento.
+- **Execute uma pesquisa de Descoberta Eletrônica**: Pesquise em fontes de dados para identificar arquivos que possam conter informações de cartão de pagamento ou conta.
+- **Adicione itens a um conjunto de revisão**: Envie os resultados da pesquisa para um conjunto de revisão para uma análise mais profunda.
+- **Marque itens para análise**: Aplique marcas de relevância e restrição para organizar documentos para o caso.
+- **Aplique restrições**: Use ferramentas de anotação para mascarar detalhes confidenciais, como números de cartão e conta.
+- **Exporte os resultados**: Exporte os itens restritos e marcados, juntamente com um relatório do item, para produção.
 
->**Observação**: este laboratório pressupõe acesso a um locatário do M365 E5 com dados a serem explorados para conduzir uma investigação. Você ainda podrá este exercício sem os dados, mas as coletas e os conjuntos de revisão não produzirão resultados.
+   > **Observação**: este laboratório pressupõe acesso a um locatário do M365 E5 com dados a serem explorados para conduzir uma investigação. Você ainda podrá este exercício sem os dados, mas as coletas e os conjuntos de revisão não produzirão resultados.
 
-## Tarefa 1 – Conceder permissões para Descoberta Eletrônica (Premium)
+## Tarefa 1 – Conceder permissões para Descoberta Eletrônica
 
 Para exportar arquivos, você precisa de permissões específicas devido ao acesso direto que esta opção concede aos arquivos do usuário.
 
 1. No Microsoft Edge, navegue até o portal do Microsoft Purview, `https://purview.microsoft.com`, e faça logon.
+
 1. No painel de navegação esquerdo, selecione **Configurações**.
+
 1. No painel de navegação à esquerda, expanda **Funções e escopos** e selecione **Grupos de funções**.
+
 1. Na página **Grupos de funções para Soluções do Microsoft Purview**, selecione **Gerenciador de Descoberta Eletrônica**.
+
 1. Na página de submenu **Gerenciador de Descoberta Eletrônica** à direita, selecione **Editar**.
+
 1. Na página **Gerenciar o Administrador de Descoberta Eletrônica**, selecione **Escolher usuários**.
+
 1. Na página de submenu **Escolher usuários** à direita, selecione o usuário que você usará para realizar a investigação de Descoberta Eletrônica nas próximas etapas e clique em **Selecionar**.
 
     >**Observação**: certifique-se de selecionar o usuário que revisará os dados e exportará os resultados da pesquisa.
 
 1. De volta à página **Gerenciar Gerenciador de Descoberta Eletrônica**, selecione **Avançar**.
+
 1. Na página **Gerenciar o Administrador de Descoberta Eletrônica**, selecione **Avançar**.
+
 1. Na página **Revisar o grupo de funções e concluir**, clique em **Salvar** para adicionar seu usuário ao grupo de funções do Gerenciador de Descoberta Eletrônica.
+
 1. Depois de adicionar os usuários , selecione **Concluído** na página **Você atualizou o grupo de funções**.
 
 Você concedeu a permissão do Gerenciador de Descoberta Eletrônica.
 
-## Tarefa 2 – Criar um caso de Descoberta Eletrônica (Premium)
+## Tarefa 2 – Criar um caso de Descoberta Eletrônica
 
-Agora que você tem as permissões necessárias, pode criar um novo caso de Descoberta Eletrônica para iniciar sua investigação.
+Nesta tarefa, você criará um caso de Descoberta Eletrônica para gerenciar a investigação de dados de pagamento.
 
 1. No Microsoft Purview, selecione **Soluções** > **Descoberta Eletrônica**.
 
-   Isso levará você diretamente para a experiência **Clássica** de **Descoberta Eletrônica (Premium)**.
+1. Na página **Casos**, selecione **Criar caso**.
 
-1. Na página **Descoberta Eletrônica (Premium)**, selecione a guia **Casos** e **+ Criar um caso**.
-1. Na página de submenu **Nomear seu caso** à direita, insira:
+1. Na janela da caixa de diálogo **Novo caso**, digite:
 
-   - **Nome**: `Legal Investigation 2024`
-   - **Descrição**: `eDiscovery case for the 2024 legal investigation involving relevant emails and documents.`
+   - **Nome do caso**: `Payment Data Leak Investigation`
+   - **Descrição do caso**: `Investigation into potential exposure of payment card and account data at Contoso.`
 
-1. Selecione **Avançar**.
-1. Na página **Adicionar membros da equipe e definir configurações**, certifique-se de adicionar o usuário que conduzirá a investigação e clique em **Avançar**.
-1. Na página **Revisar caso**, clique em **Enviar** e, em seguida, **Concluído**.
+1. Selecione **Criar**.
 
-Você criou um novo caso de Descoberta Eletrônica chamado _Investigação Jurídica 2024_.
+   Depois que o caso for criado, você será levado diretamente ao novo caso.
 
-## Tarefa 3 – Adicionar custodiantes ao caso
+Você criou com êxito um caso de Descoberta Eletrônica chamado _Investigação de Vazamento de Dados de Pagamento_.
 
-Agora que o caso foi criado, você precisa adicionar custodiantes. Os custodiantes são indivíduos que podem possuir informações relevantes para a investigação.
+## Tarefa 3 – Criar uma pesquisa de Descoberta Eletrônica
 
-1. Depois de criar o caso na tarefa anterior, você deve estar na guia **Visão geral** do caso **Investigação Jurídica 2024**.
-1. Selecione a guia **Fontes de dados** na navegação superior e, em seguida, selecione **Adicionar fonte de dados** > **Adicionar novos custodiantes**.
-1. Na página de submenu **Novo custodiante**, em **Selecionar custodiante**, adicione custodiantes ao seu caso e clique em **Avançar**.
-1. Na página **Configurações de espera**, verifique se os custodiantes adicionados na etapa anterior estão selecionados para colocar em espera.
-1. Na página **Revisar custodiantes**, selecione **Enviar** e, em seguida, **Concluído** depois que os novos custodiantes forem criados.
+Nesta tarefa, você criará uma pesquisa para localizar emails e documentos que fazem referência a dados de pagamento confidenciais.
 
-Você adicionou custodiantes ao caso _Investigação Jurídica 2024_.
+1. Selecione **Criar uma pesquisa**.
 
-## Tarefa 4 – Criar e executar uma estimativa de coleta
+1. Na janela da caixa de diálogo **Nova pesquisa**, insira:
 
-Com os custodiantes adicionados, agora você pode executar uma estimativa de coleta para obter uma visão geral do volume e da relevância dos dados.
+   - **Nome da pesquisa**: `Payment Data Exposure Search`
+   - **Descrição da pesquisa**: `Find emails and documents that reference credit cards, debit cards, or account numbers.`
 
-1. Depois de adicionar custodiantes ao caso na tarefa anterior, você ainda deve estar na guia **Fontes de dados** do caso **Investigação Jurídica 2024**.  
-1. Selecione a guia **Coletas** na navegação superior e selecione **+ Nova coleta**.
-1. Na configuração **Nova coleta**, dê à coleta um **Nome e descrição**. Digite:
+1. Selecione **Criar**.
 
-   - **Nome**: `Legal Data Collection`
-   - **Descrição**: `Collecting emails and documents relevant to the 2024 legal investigation.`
+1. Na página **Pesquisa de Exposição de Dados de Pagamento**, selecione **Adicionar fontes**.
 
-1. Selecione **Avançar**.
-1. Em **Escolher fontes de dados de custódia**, clique em **+ Selecionar custodiantes**.
-1. Na página de submenu **Selecionar custodiantes** à direita, adicione os custodiantes que foram adicionados ao caso na tarefa anterior e selecione **Adicionar**.
-1. De volta à página **Escolher fontes de dados de custódia**, selecione **Avançar**.
-1. Em **Escolher fontes de dados não custodiais**, selecione **Avançar**.
-1. Em **Locais adicionais**, defina o status como **Ativado** para estes locais:
+1. Na página **Pesquisar de origem**, **filtre** suas fontes para **Somente grupos**.
 
-   - Caixas de correio do Exchange
-   - Pastas públicas do Exchange
+1. Selecione **Adicionar fontes em todo o locatário** e deixe as caixas de seleção selecionadas para **Todas as pessoas e grupos** e **Todas as pastas públicas**.
 
-1. Selecione **Avançar**.
-1. Na página **Definir consulta de pesquisa**, use o construtor de consultas para criar uma pesquisa para localizar conteúdo relevante para o caso:
+1. Selecione **Salvar**.
 
-   - Use o operador **AND** para pesquisar **palavras-chave****iguais** a `legal`.
+1. De volta à página **Pesquisa de Exposição de Dados de Pagamento**, no **Construtor de condições**, adicione condições:
 
-    >**Observação**: talvez seja necessário excluir a opção **Selecionar um filtro** depois de criar a consulta de pesquisa para encontrar palavras-chave iguais a **jurídico**. Se essa opção estiver presente, ela impedirá que você adicione o subgrupo na próxima etapa.
-    >![Captura de tela mostrando o construtor de consultas na Descoberta Eletrônica Premium.](./Media/ediscovery-subgroup-bug.png)
+   - Na primeira caixa, defina **Palavras-chave Iguais a** e, em seguida, digite `credit card`.
+   - Na segunda caixa, digite `debit card`.
+   - Na terceira caixa, digite `account number`.
 
-   - Selecione **Adicionar um subgrupo**.
-   - Use o operador **OR** para pesquisar **palavras-chave****iguais** a `contract`.
+   > **Observação**: As condições são tratadas como OR, portanto, a pesquisa retorna itens que incluem cartão de crédito, cartão de débito ou número da conta.
 
-    >![Captura de tela mostrando o construtor de consultas na Descoberta Eletrônica Premium.](./Media/ediscovery-query-builder.png)
+1. Selecione **Executar consulta**.
 
-1. Selecione **Avançar**.
-1. Na página **Revisar e criar coleta**, selecione **Enviar** e, em seguida, **Concluído** na página **Nova coleta criada**.
-1. De volta à página **Coletas**, revise o andamento da estimativa de coleta. Use o botão **Atualizar** para atualizar a página e verificar o status da estimativa de coleta. Depois que o status da estimativa for atualizado para **Estimado** e o **Status da prévia** for atualizado para **Êxito**, a estimativa de coleta será concluída.
+1. Na página **Escolher resultados da pesquisa**, selecione **Estatísticas** e, em seguida, marque **Incluir relatório de palavras-chave da consulta**.
 
-    >![Captura de tela mostrando o botão Atualizar e o status da estimativa de coleta.](./Media/collection-estimate-status.png)
+1. Selecione **Executar consulta** para iniciar a pesquisa.
 
-    >**Dica**: quando a estimativa de coleta for concluída, sinta-se à vontade para tentar criar consultas diferentes ou usar o editor KQL para pesquisas mais avançadas. Para fazer isso, marque a caixa de seleção à esquerda da estimativa de coleta e selecione **Editar coleta**. A página **Definir consulta de pesquisa** abrirá. Você pode modificar a consulta e enviar uma nova estimativa de coleta para explorar como a consulta altera sua estimativa de coleta.
+   > **Observação**: Esse processo pode levar cerca de 5 minutos para gerar resultados.
 
-1. Selecione a **Coleta de dados jurídicos** e explore a estimativa de coleta.
+1. Quando a pesquisa for concluída, examine os resultados na guia **Estatísticas**. Examine as contagens de itens, o volume de dados e as ocorrências de palavras-chave.
 
-   - **Guia Resumo**: fornece uma visão geral das estatísticas da coleta, incluindo itens recuperados, locais com ocorrências e tipos de arquivo.
-   - **Guia Fontes de dados**: exibe informações sobre fontes de dados custodiais e não custodiais incluídas na coleta.
-   - **Guia Estatísticas de pesquisa**: mostra estatísticas detalhadas da última estimativa de coleta, incluindo o número de itens e o volume de dados.
-   - **Guia Opções de coleta**: lista e explica as diferentes opções disponíveis ao configurar uma coleta, como incluir anexos na nuvem e tópicos de conversa.
+1. Alterne para a guia **Amostra**. Selecione **Gerar resultados de amostra**.
 
-    >![Captura de tela mostrando as guias a serem exploradas na estimativa de coleta da Coleta de dados jurídicos.](./Media/explore-collection-estimate.png)
+1. Na página **Gerar exibição de exemplo**, deixe os padrões selecionados e selecione **Executar Consulta**.
 
-Você criou e revisou uma coleta chamada _Coleta de Dados Jurídicos_.
+   > **Observação**: Esse processo pode levar cerca de 5 minutos para gerar resultados.
 
-## Tarefa 5 – Confirmar a coleta em um conjunto de revisão
+1. Depois que a consulta for concluída, examine os resultados.
 
-Quando a coleta estiver satisfatória, confirme-a em um conjunto de revisão para análise detalhada.
+Você executou a pesquisa com êxito e revisou os resultados usando as exibições Estatísticas e Amostras.
 
-1. Depois de criar a estimativa de coleta na tarefa anterior, você ainda deve estar na guia **Coletas** do caso **Investigação Jurídica 2024**.  
-1. Selecione a coleção **Coleta de dados jurídicos**.
-1. Na página de submenu **Coleta de dados jurídicos** à direita, selecione **Confirmar coleta**.
-1. Na página **Confirmar itens em um conjunto de revisão**, verifique se a opção **Adicionar a um novo conjunto de revisão ** está selecionada e nomeie-a `Legal Case Review`.
-1. Deixe os outros padrões selecionados e selecione **Confirmar** para confirmar a coleção em um conjunto de revisão.
+## Tarefa 4 – Adicionar a pesquisa a um conjunto de revisão
 
-Você confirmou a coleta em um conjunto de revisão.
+Nesta tarefa, você enviará os resultados da pesquisa para um conjunto de revisão para que eles possam ser analisados mais adiante.
 
-## Tarefa 6 – Explorar o conjunto de revisão
+1. Na página **Pesquisa de Exposição de Dados de Pagamento**, selecione **Adicionar ao conjunto de revisão**.
 
-1. Depois de confirmar a coleta em um conjunto de revisão na tarefa anterior, você ainda deve estar na guia **Coleta** do caso **Investigação Jurídica 2024**.
-1. Selecione a guia **Conjuntos de revisão** na navegação superior e, em seguida, selecione o conjunto de revisão de **Revisão de Casos Jurídicos** recém-criado.
-1. Na página de submenu **Revisão de casos jurídicos** à direita, clique em **Abrir conjunto de revisões** na parte inferior da página.
-1. Explore o que você pode fazer com os itens do seu conjunto de revisão:
+1. No submenu **Adicionar ao conjunto de revisão**, selecione **Adicionar ao novo conjunto de revisão**.
 
-   1. **Filtros**: permite aplicar condições para restringir os itens exibidos no conjunto de revisão.
-   1. **Rótulo**: permite rotular documentos com rótulos específicos para melhor organização e identificação.
-   1. **Grupo**: permite organizar o conteúdo do conjunto de revisão por itens relacionados, como famílias ou conversas.
-   1. **Exibir fonte**: fornece uma visualização avançada do documento selecionado, exibindo-o em seu formato original.
-   1. **Exibir texto sem formatação**: mostra o texto extraído de um documento, ignorando imagens e formatação incorporadas.
-   1. **Anotar**: permite que os usuários apliquem marcações, redações e outras anotações no documento.
-   1. **Exibir metadados**: exibe vários metadados associados ao documento selecionado para obter informações detalhadas.
+   - Insira um nome: `Payment Data Review Set`.
 
-    >![Captura de tela mostrando as opções disponíveis para conjuntos de revisão na Descoberta Eletrônica Premium.](./Media/review-set.png)
+1. Em **Selecionar itens para incluir**, mantenha **os itens indexados que correspondem à consulta de pesquisa selecionada**.
 
-1. Depois de explorar o conjunto de avaliações, você pode exportar itens para análise posterior.
+1. Em **Selecionar itens em listas e anexos**, selecione **Listar anexos** para que os arquivos anexados sejam incluídos no conjunto de revisão.
 
-Você abriu e revisou seu conjunto de revisão.
+1. Deixe todas as outras opções em seus padrões e selecione **Adicionar ao conjunto de revisão**.
 
-## Tarefa 7 – Exporte os resultados da pesquisa
+   > **Observação**: Esse processo pode levar cerca de 5 minutos para gerar resultados.
 
-Para salvar seu trabalho e permitir uma análise mais aprofundada, você exportará os resultados da pesquisa.
+Você criou com êxito o **Conjunto de Revisão de Dados de Pagamento** e adicionou os resultados da pesquisa a ele.
 
-1. Você ainda deve estar no conjunto de revisão **Revisão de Caso Jurídico** na Descoberta Eletrônica (Premium).
-1. Marque a caixa de seleção ao lado dos itens que deseja exportar para análise posterior.
-1. Selecione a lista suspensa em **Ações** > **Exportar**.
+## Tarefa 5 – Examinar e marcar itens
 
-    >![Captura de tela mostrando a opção de exportar um conjunto de revisão na Descoberta Eletrônica Premium.](./Media/export-review-set.png)
+Nesta tarefa, você filtra os itens do conjunto de revisão e aplica marcas para organizá-los para a investigação.
 
-1. Na página de submenu **Opções de exportação** à direita, insira:
+1. Na página **Conjunto de Revisão de Dados de Pagamento**, selecione **Consulta** e configure:
 
-   - **Nome da exportação**: `LegalCaseExport_July2024`
-   - **Descrição**: `Export of relevant emails and documents for the July 2024 legal case investigation.`
-   - **Exportar estes documentos**: somente documentos selecionados
-   - **Expandir seleção**: nenhum
-   - **Opções de saída**: estrutura de diretório condensada
+   - Primeira lista suspensa: **Palavras-chave**
+   - Operador: **É igual a qualquer um dos**
+   - Inserir palavras-chave:
 
-1. Clique no botão **Exportar** na parte inferior da página de submenu.
+     - `Visa`
+     - `Master Card`
+   - Selecione **+ Adicionar condições**.
+   - Adicionar condição:
 
-    >![Captura de tela mostrando as opções de configuração para exportar um conjunto de revisão.](./Media/export-options-review-set.png)
+     - Campo: **Classe do arquivo**
+     - Operador: **É igual a qualquer um dos**
+     - Valor: `Document`
+   - Selecione **Executar consulta**.
 
-1. Você receberá uma notificação informando que **Um trabalho foi criado** para exportar seu conjunto de revisão. Selecione **OK** nesta notificação.
-1. Para acessar o conjunto de revisão exportado, expanda **Casos Premium** no painel de navegação à esquerda e selecione **Casos**. Selecione o caso **Investigação Jurídica 2024** e, em seguida, a guia **Exportações** na navegação superior.
-1. Selecione o **LegalCaseExport_July2024**.
-1. Na página de submenu **LegalCaseExport_July2024** à direita, marque a caixa de seleção ao lado à esquerda de cada arquivo exportado e selecione **Baixar**. Isso fará o download de um resumo .csv e um arquivo zip dos itens exportados.
+1. Selecione **Salvar** para salvar essa consulta de pesquisa. No campo Nome do filtro, insira `Payment data docs`.
 
-    >**Dica**: talvez seja necessário desativar o bloqueador de pop-ups para baixar os arquivos exportados.
+1. Na barra de comandos, selecione **Arquivos de marcação**.
 
-Você exportou os resultados da pesquisa para revisão.
+1. No submenu de **Arquivos de marcação**, selecione **Criar/editar marcas**.
+
+1. Na página **Gerenciar marcas**, configure:
+
+   - **Nome do grupo de marcas**: `Relevance`
+
+     - **Nome da marca**: `Relevant`
+     - Selecione **Adicionar marca** e, em seguida, adicione `Not relevant`
+   - Selecione **Adicionar grupo de marcas**.
+   - **Nome do grupo de marcas**: `Review status`
+     - **Nome da marca**: `Needs redaction`
+
+1. Selecione **Salvar**, em seguida, **Fechar**.
+
+1. No submenu de **Arquivos de marcação**, marque o primeiro item como **Relevante** e o segundo item como **Não relevante**.
+
+1. No conjunto de revisão, localize **Permissões de Compra da Contoso – T1.docx** de **Irvin S** de **2 de agosto de 2019**.
+
+1. Selecione o item e marque-o **Precisa de restrição**.
+
+1. Selecione **Fechar** para fechar o submenu de **Arquivos de marcação**.
+
+Você marcou documentos como relevantes, não relevantes e necessita restrição.
+
+## Tarefa 6 – Aplicar restrições
+
+Nesta tarefa, você vai restringir informações confidenciais de um documento em seu conjunto de revisão.
+
+1. No **Conjunto de Revisão de Dados de Pagamento**, selecione **Permissões de Compra da Contoso – T1.docx** de **Irvin S** datado de **2 de agosto de 2019** para abrir o visualizador de documentos.
+
+1. Na barra de ferramentas do visualizador, selecione **Anotar**.
+
+1. Nas ferramentas de anotação, selecione a lista suspensa para **Desenho** e, em seguida, selecione **Restrição de área**.
+
+    >![Captura de tela mostrando onde selecionar Restrição de área.](./Media/area-redaction.png)
+
+1. Com o cursor, desenhe uma caixa em torno das informações confidenciais no arquivo, como:
+
+   - Número do cartão Visa
+   - Número do MasterCard
+   - Número da conta bancária
+
+1. Repita conforme necessário até que todos os dados confidenciais estejam cobertos.
+
+1. Feche o visualizador de documentos.
+
+1. De volta à página **Conjunto de Revisão de Dados de Pagamento**, com o arquivo **Permissões de Compra da Contoso – T1.docx** selecionado, escolha **Ações** > **Enviar Redações para PDF**.
+
+   > **Observação**: A confirmação das restrições salva um PDF com as restrições no conjunto de revisão, mantendo o arquivo original inalterado.
+
+Você aplicou restrições com êxito e as enviou para uma cópia em PDF restrita.
+
+## Tarefa 7 – Exportar resultados
+
+Nesta tarefa, você exportará os itens com restrições e marcados do conjunto de revisão para produção.
+
+1. No **Conjunto de Revisão de Dados de Pagamento**, marque as caixas de seleção ao lado dos itens que você deseja exportar.
+
+   > Inclua as o documento **Permissões de Compra da Contoso – T1.docx** que você protegeu.
+
+1. Na barra de comandos, selecione **Ações** > **Exportar**.
+
+1. No submenu **Exportar**, configure:
+
+   - **Nome da exportação**: `PaymentData_Export_2025`
+   - **Descrição**: `Export of review set items with redacted versions for Payment Data Leak Investigation.`
+
+1. Em **Selecionar itens para incluir em sua exportação**:
+
+   - Escolha **Somente documentos selecionados**.
+   - Deixe a opção **Expandir documentos selecionados para incluir > Itens da família associados** marcada (isso garante que os anexos sejam incluídos).
+
+1. Em **Tipo de exportação**, selecione **Exportar itens com o relatório de item**.
+
+   - Marque a caixa de seleção **Exportar restrição** para incluir os PDFs com restrições e a caixa de seleção **Exportar marcas** para incluir informações de marca.
+
+1. No **Formato de exportação**, selecione **Criar arquivos .msg para mensagens** e deixe todos os outros padrões selecionados.
+
+1. Selecione **Exportar**.
+
+1. Selecione o **Gerenciador de processos** para exibir o status da exportação.
+
+1. Selecione **Atualizar** no gerenciador de processos até que o status de exportação seja **Concluído**.
+
+1. Depois que o status estiver **Concluído**, selecione a linha para sua exportação.
+
+1. No submenu **Exportar**, selecione todos os arquivos em **Pacotes de exportação** e, em seguida, **Baixar**.
+
+1. Selecione um local para baixar suas exportações e navegue até o local das exportações baixadas.
+
+1. Explore os itens do arquivo zip.
+
+Você criou um caso, pesquisou dados confidenciais, adicionou itens a um conjunto de revisão, aplicou marcas e restrições e exportou os resultados com as restrições. Estas são as principais etapas na condução de uma investigação com a Descoberta Eletrônica do Microsoft Purview.
